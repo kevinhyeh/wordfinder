@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Score board</title>
+</head>
+
+<body>
+    <div id="divscoreboard">
+        <div id="title">
+            <h1>Score board</h1>
+        </div>
+        <div id="scoreboard">
+            <div id="divplayerscore">
+                <h1>Player's Score</h1>
+                <span id="spanmyscore"></span>
+            </div>
+            <div id="diventername">
+                <form>
+                <input type="text" id="playerName" />
+                <input type="text" id="playerscore" />
+                <button id="btn_score">GO..!</button>
+                </form>
+            </div>
+        </div>
+        <div id="divleaderboard">
+            LEADER BAORD !
+        </div>
+        <div id="divlname">
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- LINK TO JQUERY GOES HERE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDgbsEY5wVs8byaslFU2ZnvYxX1xm3wwjM",
+        authDomain: "bak-game.firebaseapp.com",
+        databaseURL: "https://bak-game.firebaseio.com",
+        projectId: "bak-game",
+        storageBucket: "bak-game.appspot.com",
+        messagingSenderId: "792992368200"
+    };
+
+    firebase.initializeApp(config);
+    var dataRef = firebase.database();
+    // Initial Values
+    var name;
+    var score;
+
+    dataRef.ref().orderByChild("Scores").limitToLast(5).on('child_added', function(snapshot) {
+            var newName = $('<p>').text(snapshot.val().name);
+            var newP = $('<p>').text(snapshot.val().Scores);
+            newName.append(newP)
+            $("#divlname").prepend(newName);
+        });
+
+    $(document).on("click", "#btn_score", function() {
+        event.preventDefault();
+        name = $("#playerName").val();
+        score = parseInt($("#playerscore").val());
+        dataRef.ref().push({
+            name: name,
+            Scores: score
+        });
+
+        $('#divlname').empty();
+
+        dataRef.ref().orderByChild("Scores").limitToLast(5).on('child_added', function(snapshot) {
+            var newName = $('<p>').text(snapshot.val().name);
+            var newP = $('<p>').text(snapshot.val().Scores);
+            newName.append(newP)
+            $("#divlname").prepend(newName);
+        });
+    });
+    </script>
+</body>
+
+</html>

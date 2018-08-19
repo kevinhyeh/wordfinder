@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BAK Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bak-game.css">
+    <style type="text/css">
+    #example p {
+        line-height: 0;
+        font-size: 20px;
+    }
+
+    .bartimer {
+        width: 1000px;
+        height: 80px;
+        background-color: green;
+        animation: bartimer 300000ms 1;
+    }
+
+    @keyframes bartimer {
+        0% {
+            width: 1000px;
+            height: 80px;
+        }
+        33% {
+        	background-color: yellow;
+        }
+        66% {
+        	background-color: red;
+        }
+        100% {
+            width: 0px;
+            height: 80px;
+            background-color: red;
+        }
+    }
+
+    #playarea {
+    	text-align: center;
+    	line-height: .5;
+    	cursor: pointer;
+    	font-family: serif;               /* <-- need to remove this*/
+    }
+
+    .text-line{
+        	text-decoration: line-through ;
+        }
+        
+
+		.blinking-green{
+		    animation:blinkingText_green 1s infinite;
+		}
+		@keyframes blinkingText_green{
+		    0%{     color: green;    }
+		    50%{    color: transparent; }
+		    100%{   color: #000;    }
+		}	
+
+		.blinking-red{
+		    animation:blinkingTextRed 2s infinite;
+			}
+		@keyframes blinkingTextRed{
+		    0%{     color: red;    }
+		    50%{    color: transparent; }
+		    100%{   color: #000;    }
+		}	
+
+		.blinking_2sec{
+		    animation:blinkingText_2sec 2s infinite;
+		}
+		@keyframes blinkingText_2sec{
+		    0%{     color: white;    }
+		    50%{    color: transparent; }
+		    100%{   color: #000;    }
+		}
+	#blinkNow {
+		animation: blink 3s infinite;
+	}
+
+	#blink {
+        animation: blink 1000ms 1s infinite;
+    }
+
+    #blinktwo {
+        animation: blink 1500ms 2s infinite;
+    }
+
+    #blinkthree {
+        animation: blink 2000ms infinite;
+    }
+    
+    @keyframes blink {
+        0% {
+            color: #000;
+        }
+        25% {
+            color: #fff;
+        }
+        50% {
+            color: #000;
+        }
+        75% {
+            color: #fff;
+        }
+        100% {
+            color: #000;
+        }
+    }
+
+    #moveupdown {
+    	animation: moveupdown 3s infinite linear;
+    	position: relative;
+    }
+
+    @keyframes moveupdown {
+        0% {
+            top: 0px;
+        }
+        25% {
+            top: 38px;
+        }
+        50% {
+            top: 0px;
+        }
+        75% {
+            top: -38px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+
+    #moveleftup {
+    	animation: moveleftup 3s infinite linear;
+    	position: relative;
+    }
+
+    @keyframes moveleftup {
+        0% {
+            left: 0px;
+            top: 0px;
+        }
+        25% {
+            left: -18px;
+            top: 0px;
+        }
+        50% {
+            left: 0px;
+            top: 0px;
+        }
+        75% {
+            left: 0px;
+            top: -38px;
+        }
+        100% {
+            left: 0px;
+            top: 0px;
+        }
+    }
+
+    #moverightdown {
+    	animation: moverightdown 3s infinite linear;
+    	position: relative;
+    }
+
+    @keyframes moverightdown {
+        0% {
+            left: 0px;
+            top: 0px;
+        }
+        25% {
+            left: 18px;
+            top: 0px;
+        }
+        50% {
+            left: 0px;
+            top: 0px;
+        }
+        75% {
+            left: 0px;
+            top: 38px;
+        }
+        100% {
+            left: 0px;
+            top: 0px;
+        }
+    }
+
+    #moverightup {
+    	animation: moverightup 3s infinite linear;
+    	position: relative;
+    }
+
+     @keyframes moverightup {
+        0% {
+            left: 0px;
+            top: 0px;
+        }
+        25% {
+            left: 18px;
+            top: 0px;
+        }
+        50% {
+            left: 0px;
+            top: 0px;
+        }
+        75% {
+            left: 0px;
+            top: -38px;
+        }
+        100% {
+            left: 0px;
+            top: 0px;
+        }
+    }
+
+    #moveup {
+    	animation: moveup 3s infinite;
+    	position: relative;
+    }
+
+    @keyframes moveup {
+        0% {
+            top: 0px;
+        }
+        50% {
+            top: -38px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+
+     #movedown {
+    	animation: movedown 2s infinite;
+    	position: relative;
+    }
+
+    @keyframes movedown {
+        0% {
+            top: 0px;
+        }
+        50% {
+            top: 38px;
+        }
+        100% {
+            top: 0px;
+        }
+    }
+
+    #moveleft {
+			animation: moveleft 2000ms infinite;
+			position: relative;
+		}
+
+		@keyframes moveleft {
+			0% {top: 0px;
+				left: 0px;}
+			50% {top: -20px;
+				left: 0px;}
+			100% {top: 0px;
+				left: 0px;}
+		}
+  
+
+    #rotate {
+    	display: inline-block;
+    	animation: rotate 3s infinite linear;
+    }
+
+    #rotateSlow {
+    	display: inline-block;
+    	animation: rotate 10s infinite linear;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Welcome page  -->
+    <div id="welcomepage">
+        <div id="title">
+            <h1>Spot the difference</h1>
+        </div>
+        <div id="mainIntrudction">
+            <div id="instruction">
+                <h2>Instruction</h2>
+                <p id="instructiontext">
+                    - Find the differences in each level
+                </p>
+                <p>
+                    - In type area, type out the differences
+                </p>
+                <p> - Be as specific as you can. "Object" and "Difference" required. ("Square" is "blue")
+                </p>
+            </div>
+            <div id="example">
+            </div>
+        </div>
+        <div id="choosedifficulty">
+            <span><button id="easy">Easy</button></span>
+            <span><button id="hard">Hard</button></span>
+        </div>
+        <div>
+            <button id="start">START</button>
+        </div>
+    </div>
+    <!-- Game  page  -->
+    <div id="gamepage" data-difficulty="">
+        <div id="title">
+            <h1>Play Area</h1>
+        </div>
+        <div id="scores">
+            <div id="playerscore">
+                <h4>Player Score: <span id="myscore"></span></h4>
+            </div>
+            <div id="divhighscore">
+                <h4>High Score <span id="spanhighscore">'firebase'</span></h4>
+            </div>
+        </div>
+        <div id="divtimer">
+            <div id="timeremaining"><span id="minutes"></span>:<span id="seconds"></span><span id="secondsright"></span></div>
+            <div></div>
+            <div id="divstatusbar"> status bar....! </div>
+        </div>
+        <div id="playarea">
+            
+        </div>
+        <div id="divtextarea">
+            <button id="enterAnswer">Next</button>
+             <span><button id="pauseTimer">PauseTimer</button></span>
+             <span><button id="continueTimer">Continue</button></span>
+            <div id="answerHistory"></div>
+        </div>
+    </div>
+    <!-- Result page  -->
+    <div id="divscoreboard">
+        <div id="title">
+            <h1>Score board</h1>
+        </div>
+        <div id="scoreboard">
+            <div id="divplayerscore">
+                <h1>Player's Score</h1>
+                <span id="spanmyscore"></span>
+            </div>
+            <div id="diventername">
+                <input type="text" id="entername">
+            </div>
+        </div>
+        <div id="divleaderboard">
+            LEADER BAORD !
+        </div>
+    </div>
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- LINK TO JQUERY GOES HERE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDgbsEY5wVs8byaslFU2ZnvYxX1xm3wwjM",
+        authDomain: "bak-game.firebaseapp.com",
+        databaseURL: "https://bak-game.firebaseio.com",
+        projectId: "bak-game",
+        storageBucket: "bak-game.appspot.com",
+        messagingSenderId: "792992368200"
+    };
+
+    firebase.initializeApp(config);
+    var dataRef = firebase.database();
+    // Initial Values
+    var name = "";
+    var score = "";
+
+    //welcomepage functions
+    $('#gamepage').hide();
+    $('#divscoreboard').hide();
+
+    // Easy Mode
+    $('#easy').on('click', function() {
+        $('#gamepage').attr('data-difficulty', 'easy');
+    });
+
+    // Hard Mode
+    $('#hard').on('click', function() {
+        $('#gamepage').attr('data-difficulty', 'hard');
+    });
+
+    var timeSeconds = 5;
+    var timeSecondsright = 9;
+    var timeMinutes =4;
+    var myVar ;
+    // start timer
+    function firstNumber() {
+            timeSecondsright--;
+            $('#secondsright').text(timeSecondsright);
+            if (timeSecondsright == -1) {
+                timeSecondsright = 9;
+                $('#secondsright').text(timeSecondsright);
+                timeSeconds--;
+                $('#seconds').text(timeSeconds);
+            }
+            if (timeSeconds == -1) {
+                timeSeconds = 5;
+                $('#seconds').text(timeSeconds);
+                timeMinutes--;
+                $('#minutes').text(timeMinutes);
+            }
+            if (timeMinutes == -1) {
+                alert('Out of time');
+            }
+        }
+    function startTimer() {
+        //timeSecondsright = 9;
+        //timeSeconds = 5;
+        //timeMinutes = 4;
+        $('#secondsright').text(timeSecondsright);
+        $('#seconds').text(timeSeconds);
+        $('#minutes').text(timeMinutes);
+        
+         myVar=setInterval(firstNumber, 1000);
+    }
+
+
+    //Start Button - Start Game
+    $('#start').on('click', function() {
+        var difficulty = $('#gamepage').attr('data-difficulty');
+        if (difficulty.length > 1) {
+            $('#welcomepage').hide();
+            $('#gamepage').show();
+            $('#divtimer div:nth-child(2)').addClass('bartimer');
+
+            //go to first level
+            onLevel();
+            //gameplay style (easy/hard)
+            gameStyleDifficulty();
+
+            // set timer
+            timeSeconds = 0;
+            timeSecondsright = 0;
+            timeMinutes = 5;
+            $('#minutes').text(timeMinutes);
+            $('#seconds').text(timeSeconds);
+            $('#secondsright').text(timeSecondsright);
+
+            // call timer function
+            setTimeout(startTimer, 1000);
+        } else {
+            alert('Choose Difficulty');
+        }
+    });
+
+    $('#enterAnswer').on('click', function() {
+        $('#gamepage').hide();
+        $('#divscoreboard').show();
+    });
+
+    $('#pauseTimer').on('click',function(){
+        alert(myVar);
+        clearTimeout(myVar);
+        $('.bartimer').css('animation-play-state' , 'paused');
+    });
+
+    $('#continueTimer').on('click',function(){
+        // call timer function
+        setTimeout(startTimer, 1000);
+        $('.bartimer').css('animation-play-state' , 'running');
+    });
+
+    //gamepage functions
+
+    //current level
+    var level = 0;
+
+	function onLevel() {
+		$('#playarea').empty();
+		level++;
+
+
+		if (level > 5) {
+			alert('win');
+			clearTimeout(myVar);
+        $('.bartimer').css('animation-play-state' , 'paused');
+
+		} else if (level > 1 && level < 6) {
+			alert('next level')
+			lvlPicker();
+		} else {
+			lvlPicker();
+		}
+
+	}
+
+
+   //gameplay style by difficulty
+    function gameStyleDifficulty() {
+    	if ($('#gamepage').attr('data-difficulty') == "hard" && (level > 0 && level < 6)) {
+    		$('#playarea').on('click' , function(e) {
+    			if (e.target.className == "correctAnswer") {
+					console.log('on click correct')
+					onLevel();
+				} else {
+					alert('wrong');
+				}
+    		})
+    	} else if($('#gamepage').attr('data-difficulty') == "easy") {
+    		$(document).keydown(function(e) {
+    			var key = e.key;
+
+    			if (($('.correctAnswer').text().trim().toLowerCase() == key.toLowerCase()) && (level > 0 && level < 6)) {
+    				console.log('on key correct')
+					onLevel();
+    			} else if (level > 0 && level < 6) {
+    				alert('wrong');
+    			}
+
+    		});
+    	}
+    }
+
+
+    // Levels
+
+    // BRYANT LEVELS
+
+	function levelOneB() {
+		//making <p> tags
+		for (var i = 0; i < 3; i++) {
+			var p = $('<p>');
+				//letters per <p>
+				for(var j = 0; j < 5; j++) {
+					if (i == 2 && j == 1) {
+						//different letter : Answer
+						var span = $('<span>');
+						span.text("b ");
+						span.addClass('correctAnswer');
+						p.append(span);
+					} else {
+						p.append('6 ');
+					}
+				}
+
+			$('#playarea').append(p);
+		} 
+
+	}
+
+
+	function levelTwoB() {
+		for (var i = 0; i < 7; i++) {
+			var p = $('<p>');
+			if (i == 0) {
+				for (var j = 0; j < 7; j++){
+					p.append('m');
+				}
+			} else if (i == 1) {
+				for (var j = 0; j < 10; j++){
+					p.append('m');
+				}
+			} else if (i == 2) {
+				for (var j = 0; j < 9; j++){
+					p.append('m');
+				}
+			} else if (i == 3) {
+				for (var j = 0; j < 6; j++) {
+					if (j == 4) {
+						var span = $('<span>');
+						span.text("n");
+						span.addClass('correctAnswer');
+						p.append(span);
+					} else {
+						p.append('m');
+					}
+				}
+			} else if (i == 4) {
+				for (var j = 0; j < 9; j++){
+					p.append('m');
+				}
+			} else if (i == 5) {
+				for (var j = 0; j < 3; j++){
+					p.append('m');
+				}
+			} else if (i == 6) {
+				for (var j = 0; j < 7; j++){
+					p.append('m');
+				}
+			}
+
+			$('#playarea').append(p);
+		}
+	}
+
+
+	function levelThreeB() {
+		for (var i = 0; i < 6; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 15; j++) {
+
+				if ( ((i == 1) && (j == 1 || j == 4)) || ((i == 5) && (j == 4 || j == 6 || j == 0)) ) {
+						var span = $('<span>');
+						span.text("O ");
+						span.attr('id' , 'blinkNow');
+						p.append(span);
+				} else if ( ((i == 0) && (j == 3 || j == 10)) || (i == 1 && j == 13) || (i == 2 && j == 10) || ((i == 4) && (i == 0 || j == 5)) ) {
+						var span = $('<span>');
+						span.text("O ");
+						span.attr('id' , 'blink');
+						p.append(span);
+				} else if ( ((i == 4) && (j == 7 || j == 14)) ) {
+						var span = $('<span>');
+						span.text("O ");
+						span.attr('id' , 'blinktwo');
+						p.append(span);
+				}
+				else if ( (i == 2 && j == 3) ) {
+						var span = $('<span>');
+						span.text("0 ");
+						span.addClass('correctAnswer');
+						p.append(span);
+				} else {
+					p.append('O ');
+				}
+			}
+
+			$('#playarea').append(p);
+		}
+	}
+
+
+	function levelFourB() {
+		for (var i = 0; i < 10; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 5; j++) {
+					if (i == 0 && j == 2){
+						var span = $('<span>');
+						span.text("b ");
+						span.attr('id' , 'moverightdown');
+						p.append(span);
+					} else if ( (i == 2 && j == 4) || (i == 9 && j == 4) ) {
+						var span = $('<span>');
+						span.text("b ");
+						span.attr('id' , 'moveleftup');
+						p.append(span);
+					} else if (i == 3 && j == 0) {
+						var span = $('<span>');
+						span.text("b ");
+						span.attr('id' , 'moverightup');
+						p.append(span);
+					} else if ( (i == 5 && j == 2) || (i == 7 && j == 0) ) {
+						var span = $('<span>');
+						span.text("b ");
+						span.attr('id' , 'moveupdown');
+						p.append(span);
+					} else if (i == 8 && j == 2) {
+						var span = $('<span>');
+						span.text("d ");
+						span.addClass('correctAnswer');
+						p.append(span);
+					} else {
+						p.append('b ');
+					}
+				}
+
+			$('#playarea').append(p);
+		}
+	}
+
+
+	function levelFiveB() {
+		for (var i = 0; i < 7; i++) {
+			var p = $('<p>');
+
+			if (i == 2) {
+				p.attr('id' , 'movedown');
+			} else if (i == 3) {
+				p.attr('id' , 'rotate');
+			}
+
+			for (var j = 0; j < 20; j++) {
+				if ( ((i == 0) && (j == 3 || j == 18)) || (i == 1 && j == 1) || ((i == 3) && (j == 5 || j == 17)) || ((i == 4) && (j == 6 || j == 15)) || ((i == 6) && (j == 4 || j == 16)) ) {
+					var span = $('<span>');
+					span.text("p ");
+					span.attr('id' , 'blinkNow');
+					p.append(span);
+				} else if ( (i == 0 && j == 9) || ((i == 4) && (j == 0 || j == 3))  ){
+					var span = $('<span>');
+					span.text("p ");
+					span.attr('id' , 'blinktwo');
+					p.append(span);
+				} else if ( ((i == 1) && (j == 1 || j == 13)) || ((i == 3) && (j == 4 || j == 9 || j == 17)) || ((i == 6) && (j == 3 || j == 7 || j == 13))  ){
+					var span = $('<span>');
+					span.text("p ");
+					span.attr('id' , 'blinkthree');
+					p.append(span);
+				} else if (i == 5 && j == 14) {
+					var span = $('<span>');
+						span.text("q ");
+						span.addClass('correctAnswer');
+						span.attr('id' , 'blinkthree');
+						p.append(span);
+				} else {
+					p.append('p ');
+				}
+			}
+
+			$('#playarea').append(p);
+		}
+	}
+
+
+	// KEVIN LEVELS
+
+	function levelOneK() {
+	//making <p> tags
+		for (var i = 0; i < 3; i++) {
+		var p = $('<p>');
+
+		for(var j = 0; j < 8; j++) {
+				if (i == 0 && j == 1) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("E ");
+					span.addClass('correctAnswer');
+					p.append(span);
+				} else {
+					p.append('F ');
+				}
+			}
+
+		$('#playarea').append(p);
+
+		}
+	}
+
+	function levelTwoK() {
+		//making <p> tags
+		for (var i = 0; i < 9; i++) {
+			var p = $('<p>');
+
+			if (i == 0 || i == 8) {
+
+				//letters per <p>
+				for(var j = 0; j < 5; j++) {
+					p.append('S ');
+				}
+
+			} else if (i == 1 || i == 7) {
+
+				for(var j = 0; j < 10; j++) {
+					if (i == 1 && j == 8) {
+						//different letter : Answer
+						var span = $('<span>');
+						span.text("5 ");
+						span.addClass('correctAnswer');
+						p.append(span);
+					} else {
+						p.append('S ');
+					}
+				}
+
+			} else if (i == 2 || i == 6) {
+
+				for(var j = 0; j < 12; j++) {
+					p.append('S ');
+				}
+
+			} else if (i == 3 || i == 5) {
+
+				for(var j = 0; j < 13; j++) {
+					p.append('S ');
+				}
+
+			} else {
+
+				for(var e = 0; e < 15; e++) {
+				p.append('S ');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+
+	function levelThreeK() {
+		//making <p> tags
+		for (var i = 0; i < 11; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 16; j++) {
+				if ((i == 3 && j == 3) || (i == 8 && j == 10) || (i == 1 && j == 10) || (i == 0 && j == 5)) {
+
+					var span = $('<span>');
+					span.text("Z ");
+					span.attr('id' , 'blinkNow');
+					p.append(span);
+
+				} else if((i == 1 && j == 2) || (i == 4 && j == 9) || (i == 5 && j == 3) || (i == 7 && j == 5) || (i == 9 && j == 9) ) {
+
+					var span = $('<span>');
+					span.text("Z ");
+					span.attr('id' , 'blink');
+					p.append(span);
+
+				} else if((i == 0 && j == 14) || ((i == 4) && (j == 3 || j == 12)) || (i == 6 && j == 12) || (i == 9 && j == 2) || (i == 10 && j == 6) ) {
+
+					var span = $('<span>');
+					span.text("Z ");
+					span.attr('id' , 'blinktwo');
+					p.append(span);
+
+				} else if((i == 2 && j == 4) || (i == 3 && j ==12 ) || (i == 8 && j == 0) || (i == 9 && j == 13) || (i == 10 && j == 15)) {
+
+					var span = $('<span>');
+					span.text("Z ");
+					span.attr('id' , 'blinkthree');
+					p.append(span);
+
+				} else if(i == 10 && j == 1) {
+
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("2 ");
+					span.addClass('correctAnswer');
+					p.append(span);
+
+				} else {
+					p.append('Z ');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+	function levelFourK() {
+		//making <p> tags
+		for (var i = 0; i < 4; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 29; j++) {
+				if ((i == 2) && (j == 3)) {
+
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("l ");
+					span.addClass('correctAnswer');
+					p.append(span);
+
+				} else if ( (i == 1 && j == 9) || (i == 3 && j == 21)) {
+
+					var span = $('<span>');
+					span.text("I ");
+					span.attr('id' , 'blinkNow');
+					p.append(span);
+
+				} else if ( (i == 3 && j == 6) ) {
+
+					var span = $('<span>');
+					span.text("I ");
+					span.attr('id' , 'blinktwo');
+					p.append(span);
+
+				} else if ( (i == 2 && j == 23) ) {
+
+					var span = $('<span>');
+					span.text("I ");
+					span.attr('id' , 'blinkthree');
+					p.append(span);
+
+				} else if ( (i == 0 && j == 17) || (i == 1 && j == 3) ) {
+
+					var span = $('<span>');
+					span.text("I ");
+					span.attr('id' , 'moverightdown');
+					p.append(span);
+
+				} else if ( (i == 1 && j == 28) ) {
+
+					var span = $('<span>');
+					span.text("I ");
+					span.attr('id' , 'moveleftup');
+					p.append(span);
+
+				}  else {
+					p.append('I ');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+		function levelFiveK() {
+			var spinDiv = $('<div>');
+			spinDiv.attr('id' , 'rotateSlow');
+			$('#playarea').append(spinDiv);
+		//making <p> tags
+		for (var i = 0; i < 10; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 12; j++) {
+				if ((i == 1) && (j == 7)) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("X ");
+					span.addClass('correctAnswer');
+					p.append(span);
+				} else if ( (i == 1 && j == 10) || (i == 4 && j == 2)) {
+
+					var span = $('<span>');
+					span.text("K ");
+					span.attr('id' , 'blinkNow');
+					p.append(span);
+
+				} else if ( (i == 1 && j == 4) || (i == 9 && j == 5) ) {
+
+					var span = $('<span>');
+					span.text("K ");
+					span.attr('id' , 'blinktwo');
+					p.append(span);
+
+				} else if ( (i == 3 && j == 6) || (i == 6 && j == 6) || (i == 8 && j == 6) ) {
+
+					var span = $('<span>');
+					span.text("K ");
+					span.attr('id' , 'blinkthree');
+					p.append(span);
+
+				} else if ( ((i == 1) && (j == 1 || j == 8)) || (i == 2 && j == 3) || (i == 3 && j == 1) || (i == 5 && j == 6) || (i == 6 && j == 2) || (i == 7 && j == 6)) {
+
+					var span = $('<span>');
+					span.text("K ");
+					span.attr('id' , 'moverightdown');
+					p.append(span);
+
+				} else if ( (i == 6 && j == 7) || (i == 8 && j == 4) || (i == 9 && j == 7) ) {
+
+					var span = $('<span>');
+					span.text("K ");
+					span.attr('id' , 'moveleftup');
+					p.append(span);
+
+				} else {
+					p.append('K ');
+				}
+			}
+
+			$('#rotateSlow').append(p);
+
+		}
+	}
+
+	// AMOLS LEVELS
+
+		function levelOneA() {
+		//making <p> tags
+		for (var i = 0; i < 4; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 9; j++) {
+				if ((i == 2) && (j == 7)) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("C");
+					span.addClass('correctAnswer');
+					p.append(span);
+				} else {
+					p.append('G');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+	function levelTwoA() {
+		//making <p> tags
+		for (var i = 0; i < 4; i++) {
+			var p = $('<p>');
+			p.addClass('text-line');
+
+			for(var j = 0; j < 12; j++) {
+				if ((i == 2) && (j == 7)) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("V ");
+					span.addClass('correctAnswer');
+					p.append(span);
+				} else if ( j == 1 || j == 4 || j == 7 ) {
+					p.append('W ');
+				} else {
+					p.append('W');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+
+	function levelThreeA() {
+		//making <p> tags
+		for (var i = 0; i < 4; i++) {
+			var p = $('<p>');
+
+			if (i == 0) {
+				p.addClass('blinking-green');
+			} else if (i == 2) {
+				p.addClass('blinking-red');
+			}
+
+			for(var j = 0; j < 10; j++) {
+				if ((i == 2) && (j == 4)) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("8");
+					span.addClass('correctAnswer');
+					p.append(span);
+				} else {
+					p.append('6');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+	function levelFourA() {
+		//making <p> tags
+		for (var i = 0; i < 4; i++) {
+			var p = $('<p>');
+
+			if (i == 0 || i == 2) {
+				p.addClass('blinking_2sec');
+			} else if (i == 3) {
+				p.addClass('blinking-red');
+			}
+
+			for(var j = 0; j < 12; j++) {
+				if ((i == 1) && (j == 9)) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text("N");
+					span.addClass('correctAnswer');
+					p.append(span);
+				} else if ( (i == 1 && j == 5) || (i == 3 && j == 7)) {
+			
+					var span = $('<span>');
+					span.text("M");
+					span.attr('id' , 'moveup');
+					p.append(span);
+				} else {
+					p.append('M');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+	function levelFiveA() {
+		//making <p> tags
+		for (var i = 0; i < 4; i++) {
+			var p = $('<p>');
+
+			for(var j = 0; j < 16; j++) {
+				if (i == 3 && j == 9 ) {
+					//different letter : Answer
+					var span = $('<span>');
+					span.text(".");
+					span.addClass('correctAnswer');
+					span.attr('id' , 'moveup');
+					p.append(span);
+				} else if ( (i == 1 && (j >= 0 && j <= 7)) || (i == 3 && j == 8) ) {
+			
+					var span = $('<span>');
+					span.text(":");
+					span.attr('id' , 'moveup');
+					p.append(span);
+
+				} else if ( (i == 0 && (j >= 0 && j <= 5)) || (i == 2 && (j >=11 && j <= 15)) ) {
+
+					var span = $('<span>');
+					span.text(":");
+					span.attr('id' , 'movedown');
+					p.append(span);
+
+				} else {
+					p.append(':');
+				}
+			}
+
+			$('#playarea').append(p);
+
+		}
+	}
+
+// Level picker function
+
+var lvlOnes = ['levelOneB();' , 'levelOneK();', 'levelOneA();'];
+var lvlTwos = ['levelTwoB();' , 'levelTwoK();', 'levelTwoA();'];
+var lvlThrees = ['levelThreeB();' , 'levelThreeK();', 'levelThreeA();'];
+var lvlFours = ['levelFourB();' , 'levelFourK();', 'levelFourA();'];
+var lvlFives = ['levelFiveB();' , 'levelFiveK();', 'levelFiveA();'];
+
+function lvlPicker() {
+	var randomlvl = Math.floor(Math.random() * 3);
+	if (level == 1) {
+		eval(lvlOnes[randomlvl]);
+	} else if (level == 2) {
+		eval(lvlTwos[randomlvl]);
+	}else if (level == 3) {
+		eval(lvlThrees[randomlvl]);
+	}else if (level == 4) {
+		eval(lvlFours[randomlvl]);
+	}else if (level == 5) {
+		eval(lvlFives[randomlvl]);
+	}
+}
+
+
+
+    //keywords variables
+    var object;
+    var color;
+    //player score
+    var myScore = 0;
+    // $('#myscore').text(myScore);
+
+    //diplay picture
+
+
+    //player input function
+    </script>
+</body>
+
+</html>

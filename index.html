@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BAK Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bak-game.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+
+<body>
+<div id="floatingLetters">
+    <div id="floatingL" class="background">L</div>
+    <div id="floatingX" class="background">X</div>
+    <div id="floatingE" class="background">E</div>
+    <div id="floatingP" class="background">P</div>
+    <div id="floatingZ" class="background">Z</div>
+</div>
+
+<div id="correct">
+	<div class="center">
+	    <span id="result"></span>
+	    <button id="ok">OK</button>
+    </div>
+</div>
+<div id="incorrect">
+	<div class="center">
+	    <span id="inresult"></span>
+	    <button id="restart">Continue</button>
+	    </div>
+</div>
+<!-- Welcome page  -->
+<div id="welcomepage">
+    <div id="gameTitle">
+        <h1>Eye<img src="assets/images/eye.svg">Exam</h1>
+    </div>
+    <div id="mainIntroduction">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="instruction">
+                        <h2>Instruction</h2>
+                        <p class="instructiontext">
+                            Find the different character in each level.</br>
+                            You have 5 minutes to beat all 5 levels.
+                        </p>
+                        <p id="difficultydescription">
+                        </p>
+                        <div id="choosedifficulty">
+                            <span><button id="easy">Easy</button></span>
+                            <span><button id="hard">Hard</button></span>
+                        </div>
+                        <div id="startbutton">
+                            <button id="start">START</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="poster">
+                        <div>E</div><span>1</span>
+                        <div>Y E</div><span>2</span>
+                        <div>E X A M</div><span>3</span>
+                        <div>G A M E</div><span>4</span>
+                        <div>B Y</div><span>5</span>
+                        <div>A M O L</div><span>6</span>
+                        <div>K E V I N</div><span>7</span>
+                        <div>B R Y A N T</div><span>8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Game  page  -->
+<div id="gamepage" data-difficulty="">
+    <div id="title">
+        <h3>Level <span id="level"></span></h3>
+    </div>
+    <div id="scores">
+        <div class="row">
+            <div class="col-lg-4">
+                <div id="playerscore">
+                    <h4>Player Score: <span id="myscore"></span></h4>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="timeremaining">Time Remaing:
+                    <span id="minutes"></span>:<span id="seconds"></span><span id="secondsright"></span></div>
+            </div>
+            <div class="col-lg-4">
+                <div id="divhighscore">
+                    <h4>High Score: <span id="spanhighscore"></span></h4>
+                </div>
+            </div>
+        </div>
+        <div id="divtimer">
+            <div></div>
+        </div>
+    </div>
+    <div id="playarea">
+    </div>
+    <div id="divtextarea">
+    </div>
+</div>
+
+<!-- Result page  -->
+<div id="divscoreboard">
+    <div>
+        <h5>Game Over!</h5>
+    </div>
+    <div id="scoreboard">
+        <div id="divplayerscore">
+            <h1>Player's Score</h1>
+        </div>
+        <div id="diventername">
+            <form>
+                <input type="text" id="playerName" placeholder="Enter Name" />
+                <div>Your final score: <span id="finalscore"></span></div>
+                <button id="btn_score">Enter</button>
+            </form>
+        </div>
+    </div>
+    <div id="divleaderboard">
+        LEADER BAORD !
+        <div id="divlname">
+        </div>
+    </div>
+    <div>
+    	<button id="restartbutton">Restart</button>
+    </div>
+</div>
+<!-- LINK TO FIREBASE GOES HERE -->
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<!-- LINK TO JQUERY GOES HERE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/js/bak-game-startpage.js"></script>
+<script type="text/javascript" src="assets/js/bak-game-gamepage.js"></script></body>
+
+</html>
